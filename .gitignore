@@ -1,0 +1,8 @@
+node_modules
+dist
+.env
+globalConfig.json
+coverage
+mongodb_data
+.DS_Store
+.rabbitmq_data
