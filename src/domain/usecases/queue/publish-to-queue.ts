@@ -8,6 +8,7 @@ export namespace PublishTokenRequest {
     cardNumber: string
     cvv: string
     scheme: string
+    schemeId: string
   }
 
   export type Result = {

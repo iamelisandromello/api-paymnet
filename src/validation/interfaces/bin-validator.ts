@@ -5,14 +5,15 @@ export interface BinValidator {
 export namespace BinValidator {
   export type Params = {
     listRegex: Array<{
-      id: string
-      name: string
+      schemeId: string
+      scheme: string
       regex: string
     }>
     cardNumber: number
   }
 
   export type Result = {
-    name: string
+    scheme: string
+    schemeId: string
   } | undefined
 }

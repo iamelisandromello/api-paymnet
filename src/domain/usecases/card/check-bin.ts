@@ -4,6 +4,7 @@ export interface CheckBin {
 
 export namespace CheckBin {
   export type Result = {
-    name: string
+    scheme: string
+    schemeId: string
   } | undefined
 }

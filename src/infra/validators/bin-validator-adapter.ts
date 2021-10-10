@@ -2,7 +2,8 @@ import { BinValidator } from '@/validation/interfaces'
 
 type NormalizeType = {
   id?: string
-  name?: string
+  scheme?: string
+  schemeId?: string
   regex?: string
 } | undefined
 
@@ -20,7 +21,8 @@ export class BinValidatorAdapter implements BinValidator {
     if (!badge) return undefined
 
     return {
-      name: badge.name ?? 'undefined'
+      scheme: badge.scheme ?? 'undefined',
+      schemeId: badge.schemeId ?? 'undefined'
     }
   }
 }

@@ -4,8 +4,8 @@ export interface LoadBinsRepositoryContract {
 
 export namespace LoadBinsRepositoryContract {
   export type Result = Array<{
-    id: string
-    name: string
+    schemeId: string
+    scheme: string
     regex: string
   }> | null
 }

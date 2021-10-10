@@ -1,5 +1,6 @@
 
 import { MongoHelper } from '@/infra/database/mongo'
+import { SchemeTransformer } from '@/infra/database/mongo/transformers'
 import {
   LoadBinsRepositoryContract
 } from '@/application/contracts/database/card'
@@ -25,6 +26,6 @@ LoadBinsRepositoryContract {
       })
       .catch(err => console.error(`Failed to find documents: ${err}`))
 
-    return collection?.map(element => MongoHelper.map(element)) ?? null
+    return collection?.map(element => SchemeTransformer.map(element)) ?? null
   }
 }

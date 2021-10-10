@@ -19,7 +19,10 @@ export class PaymentController implements Controller {
       const scheme = await this.checkBin.check(request.body.cardNumber)
       if (!scheme) return badRequest(new InvalidParamError('Number Card'))
 
-      Object.assign(request.body, { scheme: scheme?.name ?? undefined })
+      Object.assign(request.body, {
+        scheme: scheme?.scheme ?? undefined,
+        schemeId: scheme?.schemeId ?? undefined
+      })
 
       const token = await this.publishTokenRequest.publish(request.body)
       if (!token) return brokerError(new BrokerError())
