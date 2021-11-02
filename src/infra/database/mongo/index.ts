@@ -1,2 +1,5 @@
 export * from './mongo-helper'
 export * from './scheme-mongo-repository'
+export * from './user-mongo-repository'
+export * from './query-builder'
+export * from './wallet-payment-provider-mongo-repository'
