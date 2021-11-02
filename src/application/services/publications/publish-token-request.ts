@@ -1,4 +1,4 @@
-import { PublishTokenRequest } from '@/domain/usecases/card'
+import { PublishTokenRequest } from '@/domain/usecases/publications'
 import {
   PublishOnBrokerContract,
   StartPaymentBrokerContract,
@@ -27,7 +27,8 @@ export class PublishToQueueService implements PublishTokenRequest {
         queue: 'tokenization-reponse',
         correlationId: isPublished
       })
-      return messageResponse
+      const teste = { token: messageResponse?.token }
+      return teste
     }
     return undefined
   }

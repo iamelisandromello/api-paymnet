@@ -1,2 +1,2 @@
 export * from './check-bin'
-export * from '../queue/publish-to-queue'
+export * from '../publications/publish-token-request'
