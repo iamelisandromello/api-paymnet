@@ -6,7 +6,7 @@ import {
 import { serverError, success, brokerError, badRequest } from '@/presentation/helpers/http'
 import { BrokerError, InvalidParamError } from '@/presentation/errors'
 import { CheckBin } from '@/domain/usecases/card'
-import { PublishTokenRequest } from '@/domain/usecases/queue'
+import { PublishTokenRequest } from '@/domain/usecases/publications'
 
 export class PaymentController implements Controller {
   constructor (
