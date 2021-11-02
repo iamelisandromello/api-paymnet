@@ -1,4 +1,4 @@
-import { PublishOnBrokerContract, StartPaymentBrokerContract, ConsumeOnBrokerContract } from '@/application/contracts/queue'
+import { PublishOnBrokerContract, StartPaymentBrokerContract, ConsumeOnBrokerContract } from '@/application/contracts/publications'
 import { Connection, Channel, connect, Message, Replies } from 'amqplib'
 
 import { v4 as uuidv4 } from 'uuid'
@@ -9,7 +9,7 @@ StartPaymentBrokerContract,
 ConsumeOnBrokerContract {
   private conn?: Connection
   private channel?: Channel
-  private tokenCard?: { token: string }
+  private messageResponse?: {}
   private correlation?: string
 
   constructor (private readonly uri: string) {}
@@ -77,15 +77,15 @@ ConsumeOnBrokerContract {
 
     await this.channel?.consume(queue, (msg) => {
       if (msg) {
-        this.tokenCard = { token: '' }
+        this.messageResponse = {}
         if (msg.properties.correlationId === this.correlation) {
           console.log(` [.] Got ${msg.content.toString()}`)
           const messageConsume = JSON.parse(msg.content.toString())
-          this.tokenCard = messageConsume?.message
+          this.messageResponse = messageConsume?.message
         }
       }
     }, { noAck: true })
 
-    return this.tokenCard ?? undefined
+    return this.messageResponse ?? undefined
   }
 }
