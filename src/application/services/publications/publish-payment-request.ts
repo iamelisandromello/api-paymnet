@@ -3,7 +3,7 @@ import {
   PublishOnBrokerContract,
   StartPaymentBrokerContract,
   ConsumeOnBrokerContract
-} from '@/application/contracts/queue'
+} from '@/application/contracts/publications'
 
 export class PublishPaymentRequestService implements PublishPaymentRequest {
   constructor (

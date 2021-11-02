@@ -8,7 +8,5 @@ export namespace ConsumeOnBrokerContract {
     correlationId: string
   }
 
-  export type Result = {
-    token: string
-  } | undefined
+  export type Result = Record<string, any> | undefined
 }
