@@ -1,4 +1,4 @@
-import { PublishTokenRequest } from '@/domain/usecases/queue/publish-to-queue'
+import { PublishTokenRequest } from '@/domain/usecases/publications/publish-token-request'
 
 export const mockPublishToQueue = (): PublishTokenRequest => {
   class PublishTokenRequestStub implements PublishTokenRequest {
