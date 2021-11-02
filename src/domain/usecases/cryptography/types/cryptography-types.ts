@@ -8,9 +8,7 @@ export type EncryptResult = {
 
 export type DecryptParams = string
 
-export type DecryptResult = {
-  deciphered: string | number | TypeJson | Array<string | number | TypeJson>
-}
+export type DecryptResult = string | number | TypeJson | Array<string | number | TypeJson>
 
 type TypeJson = {
   [x: string]: string | number | boolean | Date | TypeJson
