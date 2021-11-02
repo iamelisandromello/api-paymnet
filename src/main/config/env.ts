@@ -7,5 +7,6 @@ export const env = {
   accessTokenleadTime: process.env.ACCESS_TOKEN_LEAD_TIME,
   databaseName: process.env.DATABASE_NAME ?? 'undefined',
   uriRabbitMq: process.env.URI_RABBITMQ ?? 'undefined',
-  queueTokenizeCard: process.env.QUEUE_TOKENIZE_CARD ?? 'undefined'
+  queueTokenizeCard: process.env.QUEUE_TOKENIZE_CARD ?? 'undefined',
+  queuePayment: process.env.QUEUE_PAYMENT ?? 'undefined'
 }
