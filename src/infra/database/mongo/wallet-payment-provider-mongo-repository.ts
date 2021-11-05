@@ -7,7 +7,6 @@ export class WalletPaymentProviderMongoRepository implements LoadWalletForPaymen
     params: LoadWalletForPaymentRepositoryContract.Params
   ): Promise<LoadWalletForPaymentRepositoryContract.Result> {
     const { userId, schemeId } = params
-
     const badgeCollection = await MongoHelper.getCollection('wallet', 'liuv')
 
     const query = new QueryBuilder()
@@ -37,8 +36,9 @@ export class WalletPaymentProviderMongoRepository implements LoadWalletForPaymen
       .build()
 
     const aggregateResult = await badgeCollection.aggregate(query).toArray()
+    if (aggregateResult.length === 0) return undefined
 
-    const teste = walletPaymentProviderTransformer.map(aggregateResult)
-    return teste ?? undefined
+    const wallet = walletPaymentProviderTransformer.map(aggregateResult)
+    return wallet ?? undefined
   }
 }
