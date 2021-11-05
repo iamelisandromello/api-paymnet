@@ -9,9 +9,11 @@ export namespace PublishTokenRequest {
     cvv: string
     scheme: string
     schemeId: string
+    userId: string
   }
 
   export type Result = {
-    token: string
+    lastDigitsCard: string
+    scheme: string
   } | undefined
 }
