@@ -8,7 +8,7 @@ import { BrokerError, InvalidParamError } from '@/presentation/errors'
 import { CheckBin } from '@/domain/usecases/card'
 import { PublishTokenRequest } from '@/domain/usecases/publications'
 
-export class PaymentController implements Controller {
+export class TokenizationController implements Controller {
   constructor (
     private readonly checkBin: CheckBin,
     private readonly publishTokenRequest: PublishTokenRequest
