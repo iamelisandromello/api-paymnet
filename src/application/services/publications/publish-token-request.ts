@@ -8,27 +8,33 @@ import {
 export class PublishToQueueService implements PublishTokenRequest {
   constructor (
     private readonly publishOnBroker: PublishOnBrokerContract,
-    private readonly startTokenizeBrokerContract: StartPaymentBrokerContract,
-    private readonly consumeOnBrokerContract: ConsumeOnBrokerContract,
+    private readonly startTokenizeBroker: StartPaymentBrokerContract,
+    private readonly consumeOnBroker: ConsumeOnBrokerContract,
     private readonly queueBroker: string
   ) {}
 
   async publish (
     params: PublishTokenRequest.Params
   ): Promise<PublishTokenRequest.Result> {
-    await this.startTokenizeBrokerContract.start()
+    await this.startTokenizeBroker.start()
 
     const paramsPublish = this.prepareParamsBroker(params)
 
     const isPublished = await this.publishOnBroker.synchronousPublishing(paramsPublish)
 
     if (isPublished) {
-      const messageResponse = await this.consumeOnBrokerContract.consumeSynchronousResponse({
+      const messageResponse = await this.consumeOnBroker.consumeSynchronousResponse({
         queue: 'tokenization-reponse',
         correlationId: isPublished
       })
-      const teste = { token: messageResponse?.token }
-      return teste
+
+      console.log('Service: Tokenization return Adapter', messageResponse)
+
+      const check = {
+        lastDigitsCard: '7245',
+        scheme: 'Master'
+      }
+      return check ?? undefined
     }
     return undefined
   }
