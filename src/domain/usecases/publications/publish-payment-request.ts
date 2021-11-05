@@ -5,7 +5,7 @@ export interface PublishPaymentRequest {
 export namespace PublishPaymentRequest {
   export type Params = {
     tokenCard: string
-    valor: string
+    amount: string
     paymentProviderId: string
   }
 

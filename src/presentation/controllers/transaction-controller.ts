@@ -37,7 +37,7 @@ export class TransactionController implements Controller {
         const wallet = await this.loadDataWallet.search({ userId: isUserId.userId, schemeId })
         console.log('Service WALLET: ', wallet)
 
-        Object.assign(wallet, { valor: '30,00' })
+        Object.assign(wallet, { amount: '30,00' })
 
         if (wallet) {
           const token = await this.publishPaymentRequest.publish(this.preparePlubishParams(wallet))
@@ -58,7 +58,7 @@ export class TransactionController implements Controller {
   ): PublishPaymentRequest.Params {
     return {
       tokenCard: params.tokenCard,
-      valor: params.valor,
+      amount: params.amount,
       paymentProviderId: params.paymentProviderId
     }
   }
