@@ -1,7 +1,8 @@
 
 import { MongoHelper } from '@/infra/database/mongo'
 import {
-  SearchUserRepositoryContract
+  SearchUserRepositoryContract,
+  InsertUserRepositoryContract
 } from '@/application/contracts/database/user'
 
 export class UserMongoRepository implements
@@ -18,5 +19,14 @@ SearchUserRepositoryContract {
       return { userId: userId }
     }
     return undefined
+  }
+
+  async insert (
+    params: InsertUserRepositoryContract.Params
+  ): Promise<InsertUserRepositoryContract.Result> {
+    const badgeCollection = await MongoHelper.getCollection('users', 'liuv')
+    const result = await badgeCollection.insertOne(params)
+
+    return (result.insertedId) && { userId: result?.insertedId.toString() }
   }
 }
